@@ -14,7 +14,7 @@ namespace BillOrganizer.Models.ViewModels
         [Display(Name = "日期")]
         public DateTime CreateDate { get; set; }
         [Display(Name = "金額")]
-        public int Money { get; set; }
+        public decimal Money { get; set; }
         [Display(Name = "備註")]
         public string Remark { get; set; }
     }
