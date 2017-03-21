@@ -16,6 +16,7 @@ namespace BillOrganizer.Models
         public BillService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _billRepository = new Repository<AccountBook>(unitOfWork);
         }
 
         public IQueryable<BillViewModels> Lookup()
@@ -31,6 +32,20 @@ namespace BillOrganizer.Models
              .OrderBy(x => x.CreateDate);
 
             return result;
+        }
+
+        public void Add(BillViewModels bill)
+        {
+            var result = new AccountBook()
+            {
+                Id = new Guid(),
+                Dateee = bill.CreateDate,
+                Amounttt = (int)bill.Money,
+                Categoryyy = bill.Type == "支出" ?0:1,
+                Remarkkk = bill.Remark,
+          
+            };
+            _billRepository.Create(result);
         }
 
         public void Create(AccountBook entity)

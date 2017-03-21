@@ -1,6 +1,7 @@
 ﻿@{
-    var sessionData = 
+    var sessionData =
         (List< BillOrganizer.Models.ViewModels.BillViewModels >) Session["data"];
+    int i = 1;
 }
 @if (sessionData != null)
 {
@@ -9,13 +10,15 @@
         <table class="table table-bordered table-hover">
             @foreach (var bill in sessionData)
             {
+        
                 <tr>
-                    <th>@bill.ID</th>
+                    <th>@i</th>
                     <th>@bill.Type</th>
                     <th>@bill.CreateDate.ToString("yyyy-MM-dd")</th>
                     <th>@bill.Money.ToString("#,###")</th>
                     <th>@bill.Remark</th>
                 </tr>
+               
             }
         </table>
     </div>
